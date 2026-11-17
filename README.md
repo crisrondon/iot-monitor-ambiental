@@ -33,3 +33,42 @@ Azure Table Storage
       |
       v
 LecturasAmbientales
+## Código del ESP32
+
+El código fuente correspondiente al ESP32 se encuentra en la carpeta:
+
+`esp32/esp32_monitor_ambiental.ino`
+
+Este código se encarga de:
+
+- Conectarse a la red WiFi.
+- Leer temperatura y humedad desde el sensor DHT11.
+- Clasificar el estado de la temperatura.
+- Mostrar información mediante un servidor web local.
+- Enviar periódicamente los datos a Azure Functions mediante HTTPS y JSON.
+
+## Evidencias de funcionamiento
+
+Durante las pruebas se verificó correctamente:
+
+- Lectura de temperatura y humedad desde el sensor DHT11.
+- Conexión del ESP32 a la red WiFi.
+- Envío de datos mediante HTTP POST.
+- Recepción de información en Azure Functions.
+- Almacenamiento de las lecturas en Azure Table Storage.
+- Registro continuo de datos en la tabla `LecturasAmbientales`.
+
+El flujo validado fue:
+
+```text
+DHT11
+  ↓
+ESP32
+  ↓
+HTTPS / JSON
+  ↓
+Azure Function
+  ↓
+Azure Table Storage
+  ↓
+LecturasAmbientales

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Monitor Ambiental IoT</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <header class="encabezado">
+        <div>
+            <h1>Monitor Ambiental IoT</h1>
+            <p>
+                ESP32 + DHT11 + Microsoft Azure
+            </p>
+        </div>
+
+        <div id="estadoConexion" class="conexion">
+            Conectando...
+        </div>
+    </header>
+
+
+    <main class="contenedor">
+
+        <!-- ================================================== -->
+        <!-- TARJETAS PRINCIPALES -->
+        <!-- ================================================== -->
+
+        <section class="tarjetas">
+
+            <div class="tarjeta">
+                <h2>Temperatura</h2>
+
+                <div class="valor">
+                    <span id="temperaturaActual">--</span>
+                    <span class="unidad">°C</span>
+                </div>
+            </div>
+
+
+            <div class="tarjeta">
+                <h2>Humedad</h2>
+
+                <div class="valor">
+                    <span id="humedadActual">--</span>
+                    <span class="unidad">%</span>
+                </div>
+            </div>
+
+
+            <div class="tarjeta">
+                <h2>Estado</h2>
+
+                <div
+                    id="estadoActual"
+                    class="estado estado-normal"
+                >
+                    --
+                </div>
+            </div>
+
+
+            <div class="tarjeta">
+                <h2>Dispositivo</h2>
+
+                <div class="dato">
+                    <span id="dispositivoActual">
+                        --
+                    </span>
+                </div>
+
+                <div class="dato-secundario">
+                    <span id="ubicacionActual">
+                        --
+                    </span>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ================================================== -->
+        <!-- ULTIMA ACTUALIZACION -->
+        <!-- ================================================== -->
+
+        <section class="ultima-actualizacion">
+
+            <strong>
+                Última actualización:
+            </strong>
+
+            <span id="fechaActualizacion">
+                --
+            </span>
+
+        </section>
+
+
+        <!-- ================================================== -->
+        <!-- GRAFICAS -->
+        <!-- ================================================== -->
+
+        <section class="graficas">
+
+            <div class="grafica-contenedor">
+
+                <h2>
+                    Historial de temperatura
+                </h2>
+
+                <canvas id="graficaTemperatura"></canvas>
+
+            </div>
+
+
+            <div class="grafica-contenedor">
+
+                <h2>
+                    Historial de humedad
+                </h2>
+
+                <canvas id="graficaHumedad"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================== -->
+        <!-- TABLA -->
+        <!-- ================================================== -->
+
+        <section class="tabla-contenedor">
+
+            <div class="titulo-tabla">
+
+                <h2>
+                    Últimas lecturas
+                </h2>
+
+                <button
+                    id="btnActualizar"
+                    type="button"
+                >
+                    Actualizar
+                </button>
+
+            </div>
+
+
+            <div class="tabla-scroll">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Fecha y hora</th>
+                            <th>Dispositivo</th>
+                            <th>Ubicación</th>
+                            <th>Temperatura</th>
+                            <th>Humedad</th>
+                            <th>Estado</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tablaLecturas">
+
+                        <tr>
+                            <td colspan="6">
+                                Cargando información...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            Proyecto académico de Computación en la Nube
+        </p>
+
+        <p>
+            ESP32 · Azure Functions · Azure Table Storage
+        </p>
+
+    </footer>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

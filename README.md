@@ -72,3 +72,44 @@ Azure Function
 Azure Table Storage
   ↓
 LecturasAmbientales
+## Dashboard web público
+
+El proyecto dispone de un dashboard web publicado mediante Azure Static Web Apps.
+
+El dashboard permite visualizar en tiempo real:
+
+- Temperatura actual.
+- Humedad actual.
+- Estado ambiental.
+- Dispositivo y ubicación.
+- Historial de temperatura.
+- Historial de humedad.
+- Últimas lecturas registradas.
+- Estado de conexión con la API.
+
+La aplicación web consume la API pública desarrollada con Azure Functions:
+
+`/api/ultimas_lecturas`
+
+La información mostrada proviene de Azure Table Storage, específicamente de la tabla:
+
+`LecturasAmbientales`
+
+## Arquitectura final
+
+```text
+Sensor DHT11
+      ↓
+ESP32
+      ↓
+WiFi / HTTPS / JSON
+      ↓
+Azure Function
+      ↓
+Azure Table Storage
+      ↓
+API pública de consulta
+      ↓
+Azure Static Web Apps
+      ↓
+Dashboard Web público
